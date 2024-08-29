@@ -1,4 +1,4 @@
-// import { Button } from "flowbite-react";
+
 
 import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
@@ -29,8 +29,8 @@ export default function Header() {
                 <Button className="w-12 h-10 hidden sm:inline" color='gray' pill>
                     <FaMoon/>
                 </Button>
-                <Link to="/signIn" >
-                <Button gradientDuoTone='purpleToBlue' >
+                <Link outline to="/signIn" >
+                <Button gradientDuoTone="purpleToBlue" outline >
                     Sign In
                     </Button>
                 </Link>
@@ -39,17 +39,17 @@ export default function Header() {
             </div>
             <Navbar.Collapse>
                     <Navbar.Link active={path==='/'} as={'div'}>
-                        <Link to="/">
+                        <Link className="text-base" to="/">
                             Home
                         </Link>
                     </Navbar.Link >
                     <Navbar.Link active={path==='/about'} as={'div'}>
-                        <Link to="/about">
+                        <Link className="text-base" to="/about">
                             About
                         </Link>
                     </Navbar.Link>
                     <Navbar.Link active={path==='/projects'} as={'div'}>
-                        <Link to="/projects">
+                        <Link className="text-base" to="/projects">
                             Projects
                         </Link>
                     </Navbar.Link>
