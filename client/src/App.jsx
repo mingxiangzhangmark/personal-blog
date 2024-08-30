@@ -7,6 +7,8 @@ import Projects from './pages/Projects'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Header from './components/Header'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -17,6 +19,20 @@ function App() {
     <>
       <BrowserRouter>
         <Header/>
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            // transition: Bounce
+          />
+
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path='/about' element = {<About/>} />
@@ -27,6 +43,7 @@ function App() {
           {/* <Route path='/forgotPassword' element = {<ForgotPassword/>} /> */}
         </Routes>
       </BrowserRouter>
+   
     </>
   )
 }
