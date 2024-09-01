@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp'
 import Header from './components/Header'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
+import MyFooter from './components/MyFooter'
 
 
 
@@ -42,6 +43,7 @@ function App() {
           <Route path='/signUp' element = {<SignUp/>} />
           {/* <Route path='/forgotPassword' element = {<ForgotPassword/>} /> */}
         </Routes>
+        <MyFooter/>
       </BrowserRouter>
    
     </>
