@@ -3,12 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import {  Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { signInStart, signInSuccess, signInFail } from "../../redux/user/userSlice";
+
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  const {loading,error:errorMessage} = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch(signInStart, signInSuccess, signInFail);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
@@ -16,13 +21,14 @@ export default function SignIn() {
     e.preventDefault();
     if ( !formData.email || !formData.password) {
       // toast.error("Please fill out all fields.");
-      setLoading(false);
-      return setErrorMessage('Please fill out all fields.');
-      
+      // setLoading(false);
+      // return setErrorMessage('Please fill out all fields.');
+      dispatch(signInFail('Please fill out all fields.'));
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      // setLoading(true);
+      // setErrorMessage(null);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,20 +37,23 @@ export default function SignIn() {
       const data = await res.json();
       if (data.success === false) {
         // toast.error("An error occurred. Please try again.");
-        setLoading(false);
-        return setErrorMessage('Invalid email or password.');
+        // setLoading(false);
+        dispatch(signInFail('Invalid email or password.'));
+        // return setErrorMessage('Invalid email or password.');
         
       }
-      setLoading(false);
+      // setLoading(false);
       if(res.ok) {
+        dispatch(signInSuccess(data));
         navigate('/');
         toast.success("Signin successfully.");
       }
     } catch (error) {
       // toast.error("An error occurred. Please try again.");
       console.log(error);
-      setErrorMessage('An error occurred. Please try again.');
-      setLoading(false);
+      // setErrorMessage('An error occurred. Please try again.');
+      // setLoading(false);
+      dispatch(signInFail('An error occurred. Please try again.'));
     }
   };
  
