@@ -2,6 +2,10 @@
 
 export default function Projects() {
   return (
-    <div>Projects</div>
+    <div>
+      <div>Projects</div>
+     
+    </div>
+    
   )
 }

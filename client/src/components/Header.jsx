@@ -1,5 +1,3 @@
-
-
 import { Button, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -37,7 +35,7 @@ export default function Header() {
                 <Navbar.Toggle/>
                 
             </div>
-            <Navbar.Collapse>
+            <Navbar.Collapse  >
                     <Navbar.Link active={path==='/'} as={'div'}>
                         <Link className="text-base" to="/">
                             Home
@@ -57,5 +55,6 @@ export default function Header() {
             
         </Navbar>
     </div>
+ 
   )
 }
