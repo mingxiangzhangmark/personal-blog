@@ -5,12 +5,11 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { signInStart, signInSuccess, signInFail } from "../../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
-  // const [errorMessage, setErrorMessage] = useState(null);
-  // const [loading, setLoading] = useState(false);
   const {loading,error:errorMessage} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch(signInStart, signInSuccess, signInFail);
@@ -20,14 +19,9 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if ( !formData.email || !formData.password) {
-      // toast.error("Please fill out all fields.");
-      // setLoading(false);
-      // return setErrorMessage('Please fill out all fields.');
       dispatch(signInFail('Please fill out all fields.'));
     }
     try {
-      // setLoading(true);
-      // setErrorMessage(null);
       dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
@@ -36,23 +30,16 @@ export default function SignIn() {
       });
       const data = await res.json();
       if (data.success === false) {
-        // toast.error("An error occurred. Please try again.");
-        // setLoading(false);
         dispatch(signInFail('Invalid email or password.'));
-        // return setErrorMessage('Invalid email or password.');
         
       }
-      // setLoading(false);
       if(res.ok) {
         dispatch(signInSuccess(data));
         navigate('/');
         toast.success("Signin successfully.");
       }
     } catch (error) {
-      // toast.error("An error occurred. Please try again.");
       console.log(error);
-      // setErrorMessage('An error occurred. Please try again.');
-      // setLoading(false);
       dispatch(signInFail('An error occurred. Please try again.'));
     }
   };
@@ -99,6 +86,7 @@ export default function SignIn() {
                 'Sign In'
               )}
               </Button>
+              <OAuth/>
             </form>
             <div className="mt-3 flex gap-2">
               <span className="text-sm">Do not have an account?</span>
