@@ -10,6 +10,7 @@ import Header from './components/Header'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
 import MyFooter from './components/MyFooter'
+import PrivateRoute from './components/PrivateRoute'
 
 
 
@@ -37,7 +38,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path='/about' element = {<About/>} />
-          <Route path='/dashboard' element = {<Dashboard/>} />
+          
+          <Route element = {<PrivateRoute/>}>
+            <Route path='/dashboard' element = {<Dashboard/>} />
+          </Route>
+          
           <Route path='/projects' element = {<Projects/>} />
           <Route path='/signIn' element = {<SignIn/>} />
           <Route path='/signUp' element = {<SignUp/>} />
