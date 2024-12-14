@@ -1,27 +1,37 @@
 // import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+// import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import ReactDOM from 'react-dom/client';
 // import redux store
 import { Provider } from 'react-redux'
 import { store, persistor } from '../redux/store.js'
 import { PersistGate } from 'redux-persist/integration/react'
 import ThemeProvider from './components/themeProvider.jsx'
 
-createRoot(document.getElementById('root')).render(
+// createRoot(document.getElementById('root')).render(
 
-    <PersistGate loading={null} persistor={persistor}>
+//     <PersistGate  persistor={persistor}>
      
-        <Provider store={store}>
-          <ThemeProvider>
-            <App />
-          </ThemeProvider>
-        </Provider>
+//         <Provider store={store}>
+//           <ThemeProvider>
+//             <App />
+//           </ThemeProvider>
+//         </Provider>
       
      
-    </PersistGate>
+//     </PersistGate>
   
-  // <StrictMode>
-  //   <App />
-  // </StrictMode>,
-)
+//   // <StrictMode>
+//   //   <App />
+//   // </StrictMode>,
+// )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </Provider>
+  </PersistGate>
+);
