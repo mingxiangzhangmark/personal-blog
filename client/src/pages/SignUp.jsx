@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {  Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import OAuth from "../components/OAuth";
+import OAuth from "../components/OAuth.jsx";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
