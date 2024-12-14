@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
 import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
+import path from 'path';
 
 
 dotenv.config();
@@ -15,7 +16,8 @@ mongoose.connect(
 }).catch((err) => {
     console.log('Failed to connect to MongoDB!', err);
 });
-
+// deploy
+const __dirname = path.resolve();
 
 const app = express();
 app.use(express.json());
@@ -27,6 +29,13 @@ app.listen(3000, () => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
+
+// deploy
+app.use(express.static(path.join(__dirname, '/client/dist')));
+// deploy
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
