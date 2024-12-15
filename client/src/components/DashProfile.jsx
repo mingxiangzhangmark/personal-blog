@@ -244,7 +244,7 @@ export default function DashProfile() {
             <Button
               type='button'
               gradientDuoTone='purpleToPink'
-              className='w-full'
+              className='w-full -mb-3'
             >
               Create a post
             </Button>
