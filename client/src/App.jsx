@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify'
 import MyFooter from './components/MyFooter'
 import PrivateRoute from './components/PrivateRoute'
+import CreatePost from './pages/CreatePost'
+import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
 
 
 
@@ -46,6 +48,11 @@ function App() {
           <Route path='/projects' element = {<Projects/>} />
           <Route path='/signIn' element = {<SignIn/>} />
           <Route path='/signUp' element = {<SignUp/>} />
+
+          <Route element={<OnlyAdminPrivateRoute/>}>
+            <Route path='/create-post' element = {<CreatePost/>}/>  
+          </Route>
+         
           {/* <Route path='/forgotPassword' element = {<ForgotPassword/>} /> */}
         </Routes>
         <MyFooter/>
