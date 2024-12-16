@@ -11,6 +11,8 @@ export default {
   },
   plugins: [
     flowbite.plugin(),
+    // import('tailwind-scrollbar'),
+    require('tailwind-scrollbar'),
   ],
 }
 

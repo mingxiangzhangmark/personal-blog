@@ -13,6 +13,7 @@ import MyFooter from './components/MyFooter'
 import PrivateRoute from './components/PrivateRoute'
 import CreatePost from './pages/CreatePost'
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
+import UpdatePost from './pages/UpdatePost'
 
 
 
@@ -51,8 +52,8 @@ function App() {
 
           <Route element={<OnlyAdminPrivateRoute/>}>
             <Route path='/create-post' element = {<CreatePost/>}/>  
-          </Route>
-         
+            <Route path='/update-post/:postId' element = {<UpdatePost/>}/>
+         </Route>
           {/* <Route path='/forgotPassword' element = {<ForgotPassword/>} /> */}
         </Routes>
         <MyFooter/>
