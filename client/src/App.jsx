@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute'
 import CreatePost from './pages/CreatePost'
 import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute'
 import UpdatePost from './pages/UpdatePost'
+import PostPage from './pages/PostPage'
 
 
 
@@ -47,6 +48,7 @@ function App() {
           </Route>
           
           <Route path='/projects' element = {<Projects/>} />
+          <Route path='/post/:postSlug' element = {<PostPage/>} />
           <Route path='/signIn' element = {<SignIn/>} />
           <Route path='/signUp' element = {<SignUp/>} />
 

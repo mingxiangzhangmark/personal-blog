@@ -1,6 +1,8 @@
 import { Alert, Button, FileInput, Select, TextInput } from 'flowbite-react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import hljs from 'highlight.js'; // 引入 highlight.js
+import 'highlight.js/styles/github.css'; // 选择一个 highlight.js 的样式
 import {
   getDownloadURL,
   getStorage,
@@ -13,6 +15,31 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 
+hljs.configure({
+  languages: ['javascript', 'python', 'java', 'html', 'css', 'bash'], // 添加你想支持的语言
+});
+ // ReactQuill 模块配置
+ const modules = {
+  syntax: {
+    highlight: (text) => hljs.highlightAuto(text).value, // 自动高亮代码
+  },
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ['bold', 'italic', 'underline', 'strike'], // 加粗、斜体等
+    ['blockquote', 'code-block'], // 添加代码块功能
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    [{ script: 'sub' }, { script: 'super' }],
+    [{ indent: '-1' }, { indent: '+1' }],
+    [{ direction: 'rtl' }],
+    [{ size: ['small', false, 'large', 'huge'] }],
+    [{ color: [] }, { background: [] }],
+    [{ font: [] }],
+    [{ align: [] }],
+    ['clean'], // 清除格式
+  ],
+};
+
+
 export default function CreatePost() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
@@ -20,7 +47,7 @@ export default function CreatePost() {
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
   // console.log(formData);
-  
+
   const navigate = useNavigate();
 
   const handleUpdloadImage = async () => {
@@ -163,16 +190,20 @@ export default function CreatePost() {
         )}
         <ReactQuill
           theme='snow'
+          modules={modules}
           placeholder='Write something...'
-          className='h-72 mb-12'
+          className='h-72 mb-10'
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
         />
-        <Button type='submit' gradientDuoTone='purpleToPink'>
+        
+     
+
+        <Button type='submit' gradientDuoTone='purpleToPink' className='mt-7'>
           Publish
-        </Button>
+        </Button >
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}
