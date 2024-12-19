@@ -51,7 +51,27 @@ pre{
   padding: 1rem;
   margin: 1rem 0;
   border-radius: 10px;
+  border: 1px solid #3D4553;
   /* border-left: 3px solid #f4f4f4; */
   overflow-x: auto;
   color: #f4f4f4;
+}
+
+code{
+  background-color:none;;
+}
+
+
+/* 覆盖 Highlight.js 的代码块样式 */
+.ql-syntax {
+  background-color: #2b2b2b !important; /* 代码块背景色 (黑色/深灰色) */
+  color: #ffffff !important; /* 文本颜色改为白色 */
+  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace; /* 设置代码字体 */
+  font-size: 15px; /* 设置代码字体大小 */
+  line-height: 1.5; /* 行高 */
+}
+
+/* 移除 Highlight.js 可能的关键字和其他元素颜色 */
+.ql-syntax span {
+  color: #ffffff !important; /* 强制所有子元素文本颜色为白色 */
 }

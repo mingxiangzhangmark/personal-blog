@@ -35,7 +35,8 @@ hljs.configure({
     [{ color: [] }, { background: [] }],
     [{ font: [] }],
     [{ align: [] }],
-    ['clean'], // 清除格式
+    ['link', 'image', 'video'],
+    // ['clean'], // 清除格式
   ],
 };
 
