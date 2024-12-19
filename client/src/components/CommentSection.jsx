@@ -5,9 +5,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import Comment from './Comment';
+import PropTypes from 'prop-types';
+
+CommentSection.propTypes = {
+  postId: PropTypes.string.isRequired,
+};
 
 export default function CommentSection({ postId }) {
- 
+
+  
   const { currentUser } = useSelector((state) => state.user);
   const [comment, setComment] = useState('');
   const [commentError, setCommentError] = useState(null);

@@ -8,7 +8,7 @@ export default function CallToAction() {
             <h2 className='text-2xl'>
                 Want to know more about Project made by React + Firebase?
             </h2>
-            <p className='text-gray-500 my-2'>
+            <p className='text-gray-500 my-2 dark:text-gray-50'>
                 Check out this awesome project! Aussienest is a real estate sales and rental website where people can browse properties for sale or rent through the website. Tech stack: React, Firebase, Tailwind CSS, and more.
             </p>
             <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
