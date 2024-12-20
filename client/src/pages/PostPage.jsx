@@ -14,6 +14,7 @@ export default function PostPage() {
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
 
+  console.log(error);
   
 
   useEffect(() => {
